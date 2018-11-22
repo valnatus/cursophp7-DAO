@@ -41,4 +41,14 @@ $usuario->loadById(2);
 
 $usuario->delete(2);
 echo $usuario;*/
+
+//insert
+$aluno= new Usuario();
+
+$aluno->setDeslogin("aluno");
+$aluno->setDessenha("@123");
+
+$aluno->insert();
+
+echo $aluno;
  ?>
