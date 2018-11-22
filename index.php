@@ -23,15 +23,22 @@ echo $root;
 //$search=Usuario::search("jo");
 //echo json_encode($search);
 
-/*$usuario = new Usuario();
-$usuario->login("root","1234");
+//$usuario = new Usuario();
+//$usuario->login("root","1234");
 
-echo $usuario;
-*/
+//echo $usuario;
 
+//Alterar usuario
+/*
 $usuario= new Usuario();
 
 $usuario->loadById(2);
 $usuario->update("professor","12345678");
-echo $usuario;
+echo $usuario;*/
+
+/*$usuario=new Usuario();
+$usuario->loadById(2);
+
+$usuario->delete(2);
+echo $usuario;*/
  ?>

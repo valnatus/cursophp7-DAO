@@ -58,7 +58,7 @@ class Usuario {
 		$results = $sql->select("SELECT * FROM tb_usuarios WHERE idusuario = :ID", array(
 			":ID"=>$id
 		));
-
+		$row=$results[0];
 		if(count($results)>0){
 
 			$this->setData($results[0]);
@@ -101,7 +101,7 @@ class Usuario {
 
 		if(count($results)>0){
 
-			
+			$row=$results[0];
 
 			$this->setData($results[0]);
 
@@ -123,6 +123,21 @@ class Usuario {
 			$this->setDtcadastro(new DateTime($data['dtcadastro']));
 		}
 
+		public function delete(){
+
+			$sql= new Sql();
+			$sql->query("DELETE FROM tb_usuarios WHERE idusuario = :ID", array(
+				':ID'=>$this->getIdusuario()
+			));
+
+			$this->setIdusuario(0);
+			$this->setDessenha("");
+			$this->setDeslogin("");
+			$this->setDtcadastro(new DateTime());
+		}
+
+
+
 		public function update($login, $password){
 
 			$this->setDeslogin($login);
@@ -136,20 +151,11 @@ class Usuario {
 				));
 		}
 
-	public function __toString(){
-
-		return json_encode(array(
-
-			"idusuario"=>$this->getIdusuario(),
-			"deslogin"=>$this->getDeslogin(),
-			"dessenha"=>$this->getDessenha(),
-			"dtcadastro"=>$this->getDtcadastro()->format("d/m/Y H:i:s")
-
-		));
-	}
+	
+	
 
 
-		}
+		
 
 		
 	public function __toString(){
@@ -164,7 +170,7 @@ class Usuario {
 		));
 	}
 
-
+}
 
 
  ?>
